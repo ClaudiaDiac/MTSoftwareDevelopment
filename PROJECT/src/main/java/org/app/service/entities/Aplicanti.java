@@ -20,7 +20,7 @@ public class Aplicanti {
 	private Integer AnStudii;
 	private String DomeniuInternship;
 	private Date DataSelectie;
-	private Boolean Selectat;
+	private String Selectat;
 	
 	@ManyToOne
 	private Internship internsip;
@@ -29,7 +29,7 @@ public class Aplicanti {
 	private InterviuTehnic inttehnic;
 
 	public Aplicanti(Integer iDAplicant, String numeAplicant, Date dataAplicare, Integer telefon, String email,
-			String facultate, Integer anStudii, String domeniuInternship, Date dataSelectie, Boolean selectat,
+			String facultate, Integer anStudii, String domeniuInternship, Date dataSelectie, String selectat,
 			Internship internsip, InterviuTehnic inttehnic) {
 		super();
 		IDAplicant = iDAplicant;
@@ -122,11 +122,11 @@ public class Aplicanti {
 		DataSelectie = dataSelectie;
 	}
 
-	public Boolean getSelectat() {
+	public String getSelectat() {
 		return Selectat;
 	}
 
-	public void setSelectat(Boolean selectat) {
+	public void setSelectat(String selectat) {
 		Selectat = selectat;
 	}
 
