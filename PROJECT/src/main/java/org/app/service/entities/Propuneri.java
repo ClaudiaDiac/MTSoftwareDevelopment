@@ -24,10 +24,10 @@ public class Propuneri {
 	private String Oferta;
 	
 	@ManyToOne
-	private EvaluareFinala efinala;
+	static private EvaluareFinala efinala;
 	
 	@OneToMany(mappedBy="propunere", cascade = ALL, fetch=FetchType.EAGER)
-	private List<Angajati> angajat = new ArrayList<>();
+	static private List<Angajati> angajat = new ArrayList<>();
 
 	public Propuneri(Integer iDIntern, String numeIntern, Integer iDPost, String numePost, String oferta,
 			EvaluareFinala efinala, List<Angajati> angajat) {
@@ -85,7 +85,7 @@ public class Propuneri {
 		Oferta = oferta;
 	}
 
-	public EvaluareFinala getEfinala() {
+	static public EvaluareFinala getEfinala() {
 		return efinala;
 	}
 
@@ -99,6 +99,10 @@ public class Propuneri {
 
 	public void setAngajat(List<Angajati> angajat) {
 		this.angajat = angajat;
+	}
+	
+	static public List<Angajati> getListProp() {
+		return angajat;
 	}
 
 	@Override

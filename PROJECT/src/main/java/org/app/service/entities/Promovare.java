@@ -20,10 +20,10 @@ public class Promovare {
 	private String DomeniuInternship;
 
 	@ManyToOne
-	private Locatie locatii;
+	static private Locatie locatii;
 
 	@ManyToOne
-	private Internship Internsip;
+	static private Internship Internsip;
 
 	public Promovare(Integer iDPromovare, Date dataPromovare, Integer iDLocatie, String modPromovare,
 			Integer iDPromoter, String numePromotor, String domeniuInternship, Locatie locatii, Internship internsip) {
@@ -99,7 +99,7 @@ public class Promovare {
 		DomeniuInternship = domeniuInternship;
 	}
 
-	public Locatie getLocatii() {
+	static public Locatie getLocatii() {
 		return locatii;
 	}
 
@@ -107,7 +107,7 @@ public class Promovare {
 		this.locatii = locatii;
 	}
 
-	public Internship getInternsip() {
+	static public Internship getInternsip() {
 		return Internsip;
 	}
 

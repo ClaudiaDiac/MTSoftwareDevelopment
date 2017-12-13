@@ -23,10 +23,10 @@ public class EvaluareFinala {
 	private String DecizieFinala;
 	
 	@OneToMany(mappedBy="efinal", cascade = ALL, fetch = FetchType.EAGER)
-	private List<Intern> interni = new ArrayList<>();
+	static private List<Intern> interni = new ArrayList<>();
 	
 	@OneToMany(mappedBy="efinala", cascade = ALL, fetch = FetchType.EAGER)
-	private List<Propuneri> propunere = new ArrayList<>();
+	static private List<Propuneri> propunere = new ArrayList<>();
 
 	public EvaluareFinala(Integer iDIntern, String numeIntern, Integer iDProiect, String tipFeedback,
 			String decizieFinala, List<Intern> interni, List<Propuneri> propunere) {
@@ -99,7 +99,18 @@ public class EvaluareFinala {
 	public void setPropunere(List<Propuneri> propunere) {
 		this.propunere = propunere;
 	}
-
+	
+	static public List<Intern> getListInterEval()
+	{
+		return interni;
+	}
+	
+	static public List<Propuneri> getListPropEval()
+	{
+		return propunere;
+	}
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -11,12 +11,12 @@ import org.app.service.entities.Proiecte;
 @Singleton
 public class ProiecteFactory {
 	
-	public Proiecte buildProiecte(Integer IDProiect, String NumeProiect, Integer interniCount){
-		Proiecte proiecte = new Proiecte(IDProiect, NumeProiect + " : ", interniCount, NumeProiect, null);
+	public Proiecte buildProiecte(Integer IDProiect, String NumeProiect, Integer IDCoordonator, String NumeCoordonator, Integer interniCount){
+		Proiecte proiecte = new Proiecte(IDProiect, NumeProiect + " : ", IDCoordonator, NumeCoordonator + " : ", Proiecte.getListInter());
 		List<Intern> interniProiecte = new ArrayList<>();
 		
 		for (int i=0; i<=interniCount-1; i++){
-			interniProiecte.add(new Intern(100, "Popa Dan", 10, "Apostol Andrei", 3000, null, proiecte, null ));
+			interniProiecte.add(new Intern(100, "Popa Dan", 10, "Apostol Andrei", 3000, Intern.getInttehnic(), Intern.getProiect(), Intern.getEfinal()));
 		}
 		proiecte.setInterni(interniProiecte);
 		return proiecte;

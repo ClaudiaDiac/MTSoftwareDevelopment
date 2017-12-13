@@ -19,8 +19,8 @@ public class Locatie {
 	private String NumeLocatie;
 	
 	@OneToMany(mappedBy="locatii", cascade = ALL, fetch = FetchType.EAGER, orphanRemoval = false)
-	private List<Promovare> promovari = new ArrayList<>();
-
+	static private List<Promovare> promovari = new ArrayList<>();
+	
 	public Locatie(Integer iDLocatie, String numeLocatie, List<Promovare> promovari) {
 		super();
 		IDLocatie = iDLocatie;
@@ -55,7 +55,10 @@ public class Locatie {
 	public void setPromovari(List<Promovare> promovari) {
 		this.promovari = promovari;
 	}
-
+	
+	static public List<Promovare> getListPromo() {
+		return promovari;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

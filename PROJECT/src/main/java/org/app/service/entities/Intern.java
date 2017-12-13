@@ -19,13 +19,13 @@ public class Intern {
 	private Integer IDProiect;
 	
 	@ManyToOne
-	private InterviuTehnic inttehnic;
+	static private InterviuTehnic inttehnic;
 	
 	@ManyToOne
-	private Proiecte proiect;
+	static private Proiecte proiect;
 	
 	@ManyToOne
-	private EvaluareFinala efinal;
+	static private EvaluareFinala efinal;
 
 	public Intern(Integer iDIntern, String numeIntern, Integer iDMentor, String numeMentor, Integer iDProiect,
 			InterviuTehnic inttehnic, Proiecte proiect, EvaluareFinala efinal) {
@@ -84,7 +84,7 @@ public class Intern {
 		IDProiect = iDProiect;
 	}
 
-	public InterviuTehnic getInttehnic() {
+	static public InterviuTehnic getInttehnic() {
 		return inttehnic;
 	}
 
@@ -92,7 +92,7 @@ public class Intern {
 		this.inttehnic = inttehnic;
 	}
 
-	public Proiecte getProiect() {
+	static public Proiecte getProiect() {
 		return proiect;
 	}
 
@@ -100,7 +100,7 @@ public class Intern {
 		this.proiect = proiect;
 	}
 
-	public EvaluareFinala getEfinal() {
+	static public EvaluareFinala getEfinal() {
 		return efinal;
 	}
 
