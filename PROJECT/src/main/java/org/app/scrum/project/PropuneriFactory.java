@@ -14,14 +14,14 @@ import org.app.service.entities.Propuneri;
 public class PropuneriFactory {
 	
 	public Propuneri buildPropuneri(Integer IDIntern, String NumeIntern, Integer IDPost, String NumePost, String Oferta, EvaluareFinala efinala, Integer angajatiCount ){
-		Propuneri propuneri = new Propuneri(IDIntern, NumeIntern + " : ", IDPost, NumePost + " : ", Oferta, efinala, Propuneri.getListProp());
+		Propuneri propuneri = new Propuneri(IDIntern, NumeIntern + " : ", IDPost, NumePost + " : ", Oferta, efinala, null);
 		List<Angajati> angajatPropuneri = new ArrayList<>();
 		
 		Date dataPromovare = new Date();
 		Long interval = (long)(301 * 24 *60 * 60 * 1000);
 		
 		for (int i=0; i<=angajatiCount-1; i++){
-			angajatPropuneri.add(new Angajati(1, "Andrei Stefan", 7, "Analist", 2000, "Determinat", new Date(dataPromovare.getTime() + i * interval), Angajati.getPropunere()));
+			angajatPropuneri.add(new Angajati(1, "Andrei Stefan", 7, "Analist", 2000, "Determinat", new Date(dataPromovare.getTime() + i * interval), propuneri));
 			
 		}
 		propuneri.setAngajat(angajatPropuneri);

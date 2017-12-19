@@ -23,10 +23,10 @@ public class Aplicanti {
 	private String Selectat;
 	
 	@ManyToOne
-	static private Internship internsip;
+	private Internship internsip;
 	
 	@ManyToOne
-	static private InterviuTehnic inttehnic;
+	private InterviuTehnic inttehnic;
 
 	public Aplicanti(Integer iDAplicant, String numeAplicant, Date dataAplicare, Integer telefon, String email,
 			String facultate, Integer anStudii, String domeniuInternship, Date dataSelectie, String selectat,
@@ -130,7 +130,7 @@ public class Aplicanti {
 		Selectat = selectat;
 	}
 
-	static public Internship getInternsip() {
+	public Internship getInternsip() {
 		return internsip;
 	}
 
@@ -138,7 +138,7 @@ public class Aplicanti {
 		this.internsip = internsip;
 	}
 
-	static public InterviuTehnic getInttehnic() {
+	public InterviuTehnic getInttehnic() {
 		return inttehnic;
 	}
 

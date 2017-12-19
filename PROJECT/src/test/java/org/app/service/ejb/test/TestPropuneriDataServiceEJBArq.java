@@ -63,7 +63,7 @@ public class TestPropuneriDataServiceEJBArq {
 		
 		Integer propunereToAdd = 3;
 		for(int i=1; i <= propunereToAdd; i++){
-			service.addPropuneri(new Propuneri(102, "Craciun Maria", 8, ".NET Developer", "Oferta3", Propuneri.getEfinala(), Propuneri.getListProp()));
+			service.addPropuneri(new Propuneri(102, "Craciun Maria", 8, ".NET Developer", "Oferta3", null, null));
 		}
 		Collection<Propuneri> propunere = service.getPropunere();
 		assertTrue("Fail to add propuneri!", propunere.size() == propunereToAdd);

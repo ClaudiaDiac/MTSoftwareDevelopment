@@ -15,14 +15,14 @@ public class InternshipFactory {
 	
 	public Internship buildInternship(Integer IDInternship, String DomeniuInternship, String PerioadaInternship, Date DataIncepere,
 			Date DataSfarsire, Integer IDTest, List<Promovare> promovari, List<Aplicanti> aplicant, Integer promovareCount){
-		Internship internship = new Internship(IDInternship, DomeniuInternship, PerioadaInternship, DataIncepere, DataSfarsire, IDTest, Internship.getListPromoInter(), Internship.getListAplInter());
+		Internship internship = new Internship(IDInternship, DomeniuInternship, PerioadaInternship, DataIncepere, DataSfarsire, IDTest, promovari, aplicant);
 		List<Promovare> promovariInternship = new ArrayList<>();
 		
 		Date dataPromovare = new Date();
 		Long interval = (long)(301 * 24 *60 * 60 * 1000);
 		
 		for(int i=0; i<=promovareCount-1; i++){
-			promovariInternship.add(new Promovare(2001, new Date(dataPromovare.getTime() + i * interval), 21, "Program Mentorat 2", 201, "Laur Alexandra", "Analist", Promovare.getLocatii(), Promovare.getInternsip()));
+			promovariInternship.add(new Promovare(2001, new Date(dataPromovare.getTime() + i * interval), 21, "Program Mentorat 2", 201, "Laur Alexandra", "Analist", null, internship));
 		}
 		internship.setPromovari(promovariInternship);
 		return internship;

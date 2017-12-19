@@ -64,7 +64,7 @@ public class TestInterviuTehnicDataServiceEJBArq {
 		
 		Integer inttehnicToAdd = 3;
 		for(int i=1; i <= inttehnicToAdd; i++){
-			service.addInterviuTehnic(new InterviuTehnic(1002, "Zmau Cornelia", new Date(), "Modelare", 1220, 8, "Acceptat", InterviuTehnic.getListInterInterv(), InterviuTehnic.getListAplInterv()));
+			service.addInterviuTehnic(new InterviuTehnic(1002, "Zmau Cornelia", new Date(), "Modelare", 1220, 8, "Acceptat", null, null));
 		}
 		Collection<InterviuTehnic> inttehnic = service.getInterviuriTehnice();
 		assertTrue("Fail to add Interviuri!", inttehnic.size() == inttehnicToAdd);

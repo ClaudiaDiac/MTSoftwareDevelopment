@@ -22,7 +22,7 @@ public class Proiecte {
 	private String NumeCoordonator;
 	
 	@OneToMany(mappedBy="proiect", cascade = ALL, fetch = FetchType.EAGER)
-	static private List<Intern> interni = new ArrayList<>();
+	private List<Intern> interni = new ArrayList<>();
 
 	public Proiecte(Integer iDProiect, String numeProiect, Integer iDCoordonator, String numeCoordonator,
 			List<Intern> interni) {
@@ -77,7 +77,7 @@ public class Proiecte {
 	public void setInterni(List<Intern> interni) {
 		this.interni = interni;
 	}
-	static public List<Intern> getListInter() {
+	public List<Intern> getListInter() {
 		return interni;
 	}
 	@Override

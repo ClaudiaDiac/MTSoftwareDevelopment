@@ -63,7 +63,7 @@ public class TestProiecteDataServiceEJBArq {
 		
 		Integer proiectToAdd = 3;
 		for(int i=1; i <= proiectToAdd; i++){
-			service.addProiecte(new Proiecte(3000, "Nume Proiect 1", 30, "Nume Coordonator", Proiecte.getListInter()));
+			service.addProiecte(new Proiecte(3000, "Nume Proiect 1", 30, "Nume Coordonator", null));
 		}
 		Collection<Proiecte> proiect = service.getProiect();
 		assertTrue("Fail to add proiect!", proiect.size() == proiectToAdd);

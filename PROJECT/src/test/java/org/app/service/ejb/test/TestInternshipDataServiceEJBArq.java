@@ -64,7 +64,7 @@ public class TestInternshipDataServiceEJBArq {
 		
 		Integer internsipToAdd = 3;
 		for(int i=1; i <= internsipToAdd; i++){
-			service.addInternship(new Internship(1100, "Testare", "Trei luni", new Date(), new Date(), 1110, Internship.getListPromoInter(), Internship.getListAplInter()));
+			service.addInternship(new Internship(1100, "Testare", "Trei luni", new Date(), new Date(), 1110, null, null));
 		}
 		Collection<Internship> internsip = service.getInternships();
 		assertTrue("Fail to add internship!", internsip.size() == internsipToAdd);

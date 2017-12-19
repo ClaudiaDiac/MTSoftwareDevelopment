@@ -63,7 +63,7 @@ public class TestEvaluareFinalaDataServiceEJBArq {
 		
 		Integer evfinalToAdd = 3;
 		for( int i=1; i<= evfinalToAdd; i++){
-			service.addEvaluareFinala(new EvaluareFinala(100, "Popa Dan", 3000, "Pozitiv", "Acceptat", EvaluareFinala.getListInterEval(), EvaluareFinala.getListPropEval()));
+			service.addEvaluareFinala(new EvaluareFinala(100, "Popa Dan", 3000, "Pozitiv", "Acceptat", null, null));
 		}
 		Collection<EvaluareFinala> evfinal = service.getEvaluariFinale();
 		assertTrue("Fail to add evaluare finala!", evfinal.size() == evfinalToAdd);

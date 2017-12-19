@@ -23,10 +23,10 @@ public class EvaluareFinala {
 	private String DecizieFinala;
 	
 	@OneToMany(mappedBy="efinal", cascade = ALL, fetch = FetchType.EAGER)
-	static private List<Intern> interni = new ArrayList<>();
+	private List<Intern> interni = new ArrayList<>();
 	
 	@OneToMany(mappedBy="efinala", cascade = ALL, fetch = FetchType.EAGER)
-	static private List<Propuneri> propunere = new ArrayList<>();
+	private List<Propuneri> propunere = new ArrayList<>();
 
 	public EvaluareFinala(Integer iDIntern, String numeIntern, Integer iDProiect, String tipFeedback,
 			String decizieFinala, List<Intern> interni, List<Propuneri> propunere) {
@@ -100,12 +100,12 @@ public class EvaluareFinala {
 		this.propunere = propunere;
 	}
 	
-	static public List<Intern> getListInterEval()
+	public List<Intern> getListInterEval()
 	{
 		return interni;
 	}
 	
-	static public List<Propuneri> getListPropEval()
+	public List<Propuneri> getListPropEval()
 	{
 		return propunere;
 	}

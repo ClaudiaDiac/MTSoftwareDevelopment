@@ -20,7 +20,7 @@ public class Angajati {
 	private Date DataAngajare;
 	
 	@ManyToOne
-	static private Propuneri propunere;
+	private Propuneri propunere;
 
 	public Angajati(Integer iDAngajat, String numeAngajat, Integer iDPost, String numePost, Integer salar,
 			String tipContract, Date dataAngajare, Propuneri propunere) {
@@ -95,7 +95,7 @@ public class Angajati {
 		DataAngajare = dataAngajare;
 	}
 
-	static public Propuneri getPropunere() {
+	private Propuneri getPropunere() {
 		return propunere;
 	}
 

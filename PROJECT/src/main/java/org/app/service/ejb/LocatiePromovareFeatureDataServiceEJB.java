@@ -32,8 +32,8 @@ public class LocatiePromovareFeatureDataServiceEJB extends EntityRepositoryBase<
 		logger.info("POSTCONSTRUCT-INIT internshipService: " + this.internshipService);;
 	}
 	
-	public Locatie createNewLocatie(Integer IDLoc){
-		Locatie locatie = new Locatie(IDLoc, "FEAA", Locatie.getListPromo());
+	public Locatie createNewLocatie(Integer IDLocatie){
+		Locatie locatie = new Locatie(IDLocatie, "FEAA", null);
 		List<Promovare> promovariLocatie = new ArrayList<>();
 		
 		Date dataPromovare = new Date();
@@ -41,7 +41,7 @@ public class LocatiePromovareFeatureDataServiceEJB extends EntityRepositoryBase<
 		
 		Integer promovareCount = 3;
 		for (int i=0; i<=promovareCount-1; i++){
-			promovariLocatie.add(new Promovare(2000, new Date(dataPromovare.getTime() + i * interval), 20, "Program Mentorat", 200, "Luca Ion", "Tester", locatie, Promovare.getInternsip()));
+			promovariLocatie.add(new Promovare(2000, new Date(dataPromovare.getTime() + i * interval), 20, "Program Mentorat", 200, "Luca Ion", "Tester", locatie, null));
 		}
 		
 		locatie.setPromovari(promovariLocatie);
@@ -49,8 +49,8 @@ public class LocatiePromovareFeatureDataServiceEJB extends EntityRepositoryBase<
 		return locatie;
 	}
 	
-	public Promovare getPromovariById(Integer IDPromo){
-		return promovareRepository.getById(IDPromo);
+	public Promovare getPromovariById(Integer IDPromovare){
+		return promovareRepository.getById(IDPromovare);
 	}
 	
 	public String getMessage(){

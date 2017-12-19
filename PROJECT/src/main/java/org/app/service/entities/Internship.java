@@ -24,10 +24,10 @@ public class Internship {
 	private Integer IDTest;
 	
 	@OneToMany(mappedBy="Internsip", cascade = ALL, fetch = FetchType.EAGER)
-	static private List<Promovare> promovari = new ArrayList<>();
+	private List<Promovare> promovari = new ArrayList<>();
 	
 	@OneToMany(mappedBy="internsip", cascade = ALL, fetch=FetchType.EAGER)
-	static private List<Aplicanti> aplicant = new ArrayList<>();
+	private List<Aplicanti> aplicant = new ArrayList<>();
 
 	public Internship(Integer iDInternship, String domeniuInternship, String perioadaInternship, Date dataIncepere,
 			Date dataSfarsire, Integer iDTest, List<Promovare> promovari, List<Aplicanti> aplicant) {
@@ -110,12 +110,12 @@ public class Internship {
 		this.aplicant = aplicant;
 	}
 
-	static public List<Promovare> getListPromoInter()
+	public List<Promovare> getListPromoInter()
 	{
 		return promovari;
 	}
 	
-	static public List<Aplicanti> getListAplInter()
+	public List<Aplicanti> getListAplInter()
 	{
 		return aplicant;
 	}

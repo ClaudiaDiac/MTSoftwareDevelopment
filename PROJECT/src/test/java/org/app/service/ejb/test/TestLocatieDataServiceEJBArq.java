@@ -50,7 +50,7 @@ public class TestLocatieDataServiceEJBArq {
 		logger.info("DEBUG: EJB Response ..." + response);
 	}
 	
-	@Test
+    @Test
 	public void tes4_GetLocatii(){
 		logger.info("DEBUG : Junit TESTIN: testGetLocatii ...");
 		
@@ -64,7 +64,9 @@ public class TestLocatieDataServiceEJBArq {
 		
 		Integer locatiiToAdd = 3;
 		for(int i=1; i<=locatiiToAdd; i++){
-			service.addLocatie(new Locatie(20, "FEAA", Locatie.getListPromo()));
+			service.addLocatie(new Locatie(20, "FEAA", null));
+			service.addLocatie(new Locatie(21, "Litere", null));
+			service.addLocatie(new Locatie(22, "Biologie", null));
 		}
 		Collection<Locatie> locatii = service.getLocatii();
 		assertTrue("Fail to add locatii!", locatii.size() == locatiiToAdd);
