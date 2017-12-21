@@ -15,13 +15,12 @@ import org.app.service.entities.Locatie;
 import org.app.service.entities.Promovare;
 import org.jboss.logging.Logger;
 
-
 @Stateless @LocalBean
-public class LocatiePromovareFeatureDataServiceEJB extends EntityRepositoryBase<Locatie> implements LocatiePromovareFeatureDataService {
-	private static Logger logger = Logger.getLogger(LocatiePromovareFeatureDataServiceEJB.class.getName());
+public class LocatiePromovariInternshipDataServiceEJB extends EntityRepositoryBase<Locatie> implements LocatiePromovareInternshipDataService {
+	private static Logger logger = Logger.getLogger(LocatiePromovariInternshipDataServiceEJB.class.getName());
 	
 	@EJB
-	private InternshipService internshipService;
+	private InternshipService ittehnicService;
 	
 	private EntityRepository<Promovare> promovareRepository;
 	
@@ -29,32 +28,29 @@ public class LocatiePromovareFeatureDataServiceEJB extends EntityRepositoryBase<
 	public void init(){
 		promovareRepository = new EntityRepositoryBase<Promovare>(this.em, Promovare.class);
 		logger.info("POSTCONSTRUCT-INIT promovareRepository: " + this.promovareRepository);
-		logger.info("POSTCONSTRUCT-INIT internshipService: " + this.internshipService);;
+		logger.info("POSTCONSTRUCT-INIT ittehnicService: " + this.ittehnicService);
 	}
 	
 	public Locatie createNewLocatie(Integer IDLocatie){
-		Locatie locatie = new Locatie(IDLocatie, "FEAA", null);
+		Locatie locatii = new Locatie(IDLocatie, " Noua Locatie", null);
 		List<Promovare> promovariLocatie = new ArrayList<>();
-		
+		Integer promovariCount = 3;
 		Date dataPromovare = new Date();
-		Long interval = (long)(301 * 24 *60 * 60 * 1000);
-		
-		Integer promovareCount = 3;
-		for (int i=0; i<=promovareCount-1; i++){
-			promovariLocatie.add(new Promovare(2000, new Date(dataPromovare.getTime() + i * interval), 20, "Program Mentorat", 200, "Luca Ion", "Tester", locatie, null));
+		Long interval = (long) (301 * 24 *60 * 60 * 1000);
+		for (int i=0; i<=promovariCount-1; i++){
+			promovariLocatie.add(new Promovare(2006, new Date(dataPromovare.getTime() + i * interval), 26, "Mod Promovare", 206, "Nume Promoter", "Domeniu", locatii, null ));
 		}
-		
-		locatie.setPromovari(promovariLocatie);
-		this.add(locatie);
-		return locatie;
+		locatii.setPromovari(promovariLocatie);
+		this.add(locatii);
+		return locatii;
 	}
-	
-	public Promovare getPromovariById(Integer IDPromovare){
+	 
+	public Promovare getPromovareById(Integer IDPromovare){
 		return promovareRepository.getById(IDPromovare);
 	}
 	
 	public String getMessage(){
-		return " LocatieSprint DataService is working...";
+		return "LocatieSprint DataService is working...";
 	}
 
 }

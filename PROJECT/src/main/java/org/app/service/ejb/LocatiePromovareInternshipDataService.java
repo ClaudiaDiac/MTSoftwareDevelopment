@@ -7,11 +7,11 @@ import org.app.service.entities.Locatie;
 import org.app.service.entities.Promovare;
 
 @Remote
-public interface LocatiePromovareFeatureDataService extends EntityRepository<Locatie>{
+public interface LocatiePromovareInternshipDataService extends EntityRepository<Locatie>{
 
 	Locatie createNewLocatie(Integer IDLocatie);
 	
-	Promovare getPromovariById(Integer IDPromovare);
+	Promovare getPromovareById(Integer IDPromovare);
 	
 	String getMessage();
 }
