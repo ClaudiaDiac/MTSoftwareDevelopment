@@ -54,7 +54,7 @@ public class TestLocatiePromovareInternshipDataServiceEJBArq {
 	
 	@Test 
 	public void test3_CreateNewLocatie(){
-		Locatie locatii = service.createNewLocatie(26);
+		Locatie locatii = service.createNewLocatie(25);
 		assertNotNull("Fail to create new locatie in repository!", locatii);
 		
 		locatii.setNumeLocatie(locatii.getNumeLocatie() + " - changed by test client");
@@ -65,18 +65,18 @@ public class TestLocatiePromovareInternshipDataServiceEJBArq {
 		assertNotNull("Fail to save new locatie in repository!", locatii);
 		logger.info("DEBUG createNewLocatie: locatie changed: " + locatii);
 		
-		locatii = service.getById(26);
+		locatii = service.getById(25);
 				assertNotNull("Fail to find changed locatie in repository!", locatii);
 		logger.info("DEBUG createNewLocatie: queried locatie" + locatii);
 	}
 	
 	@Test 
 	public void test2_DeleteLocatie(){
-		logger.info("DEBUG: Junit TESTING: testDeleteLocatie 26 ...");
-		Locatie locatii = service.getById(26);
+		logger.info("DEBUG: Junit TESTING: testDeleteLocatie 25 ...");
+		Locatie locatii = service.getById(25);
 		if(locatii != null)
 			service.remove(locatii);
-		locatii = service.getById(26);
-		assertNull("Fail to delete Locatie 26", locatii);
+		locatii = service.getById(25);
+		assertNull("Fail to delete Locatie 25", locatii);
 	}
 }
