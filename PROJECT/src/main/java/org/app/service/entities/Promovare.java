@@ -1,6 +1,6 @@
 package org.app.service.entities;
 
-import java.util.Date;
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
@@ -8,11 +8,12 @@ import static javax.persistence.GenerationType.AUTO;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Promovare {
+public class Promovare implements Serializable {
 	@Id
-	@GeneratedValue(strategy = AUTO)
+//	@GeneratedValue(strategy = AUTO)
+	
 	private Integer IDPromovare;
-	private Date DataPromovare;
+	private String DataPromovare;
 	private Integer IDLocatie;
 	private String ModPromovare;
 	private Integer IDPromoter;
@@ -25,7 +26,7 @@ public class Promovare {
 	@ManyToOne
 	 private Internship Internsip;
 
-	public Promovare(Integer iDPromovare, Date dataPromovare, Integer iDLocatie, String modPromovare,
+	public Promovare(Integer iDPromovare, String dataPromovare, Integer iDLocatie, String modPromovare,
 			Integer iDPromoter, String numePromotor, String domeniuInternship, Locatie locatii, Internship internsip) {
 		super();
 		IDPromovare = iDPromovare;
@@ -51,11 +52,11 @@ public class Promovare {
 		IDPromovare = iDPromovare;
 	}
 
-	public Date getDataPromovare() {
+	public String getDataPromovare() {
 		return DataPromovare;
 	}
 
-	public void setDataPromovare(Date dataPromovare) {
+	public void setDataPromovare(String dataPromovare) {
 		DataPromovare = dataPromovare;
 	}
 

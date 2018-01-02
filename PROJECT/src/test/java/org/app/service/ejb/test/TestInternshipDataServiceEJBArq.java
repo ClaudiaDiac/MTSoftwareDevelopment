@@ -3,6 +3,7 @@ package org.app.service.ejb.test;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
 
@@ -62,18 +63,28 @@ public class TestInternshipDataServiceEJBArq {
 	public void test3_AddInternship(){
 		logger.info("DEBUG: Junit TESTING: testAddInternships ...");
 		
-		Integer internsipToAdd = 3;
-		for(int i=1; i <= internsipToAdd; i++){
-			service.addInternship(new Internship(1100, "Testare", "Trei luni", new Date(), new Date(), 1110, null, null));
-		}
+		Date its = new Date();
+		Long interval = (long) (301 * 24 * 60 *60 * 1000);
+		
+//		Integer internsipToAdd = 3;
+//		for(int i=1; i <= internsipToAdd; i++){
+			service.addInternship(new Internship(1100, "Software Tester", "Trei luni", new Date(its.getTime() + 68 * interval ), new Date(its.getTime() + 101 * interval ), 1110, null, null));
+			service.addInternship(new Internship(1200, "Cyber Securiy", "Trei luni", new Date(its.getTime() + 68 * interval ), new Date(its.getTime() + 101 * interval ), 1220, null, null));
+			service.addInternship(new Internship(1300, "Software Development", "Trei luni", new Date(its.getTime() + 68 * interval ), new Date(its.getTime() + 101 * interval ), 1330, null, null));
+			service.addInternship(new Internship(1400, "Data Base", "Trei luni", new Date(its.getTime() + 68 * interval ), new Date(its.getTime() + 101 * interval ), 1440, null, null));
+			service.addInternship(new Internship(1500, ".NET Development", "Trei luni", new Date(its.getTime() + 68 * interval ), new Date(its.getTime() + 101 * interval ), 1550, null, null));
+	//		}
 		Collection<Internship> internsip = service.getInternships();
-		assertTrue("Fail to add internship!", internsip.size() == internsipToAdd);
-	}
+//		assertTrue("Fail to add internship!", internsip.size());
+}	
 	
 	@Test
 	public void test2_DeleteInternship(){
 		logger.info("DEBUG: Junit TESTING: testDeleteInternship ...");
 		
+		Collection<Internship> internsip = service.getInternships();
+		for(Internship it: internsip)
+			service.removeInternship(it);
 		Collection<Internship> internsipAfterDelete = service.getInternships();
 		assertTrue("Fail to read internship!", internsipAfterDelete.size() == 0);
 	}

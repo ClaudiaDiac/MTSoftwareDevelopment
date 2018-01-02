@@ -1,17 +1,17 @@
 package org.app.service.entities;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.AUTO;
 
+import java.io.Serializable;
+
 @Entity
-public class Intern {
+public class Intern implements Serializable {
 	@Id
-	@GeneratedValue(strategy = AUTO)
+//	@GeneratedValue(strategy = AUTO)
 	private Integer IDIntern;
 	private String NumeIntern;
 	private Integer IDMentor;

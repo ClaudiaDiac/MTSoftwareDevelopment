@@ -16,10 +16,10 @@ public class EvaluareFinalaFactory {
 		EvaluareFinala evfinala = new EvaluareFinala(IDIntern, numeIntern + " : ", IDProiect, TipFeedback + " : ", DecizieFinala + " : ", null, null);
 		List<Propuneri> propunereEvaluareFinala = new ArrayList<>();
 		
-		for (int i=0; i<=propuneriCount-1; i++){
+//		for (int i=0; i<=propuneriCount-1; i++){
 			propunereEvaluareFinala.add(new Propuneri(100, "Luca Ion", 6, "Tester", "Oferta1", evfinala, null));
 			
-		}
+//		}
 		evfinala.setPropunere(propunereEvaluareFinala);
 		return evfinala;
 		

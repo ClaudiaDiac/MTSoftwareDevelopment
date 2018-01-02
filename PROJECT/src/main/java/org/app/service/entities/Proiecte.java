@@ -1,5 +1,6 @@
 package org.app.service.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -13,9 +14,9 @@ import static javax.persistence.GenerationType.AUTO;
 import static javax.persistence.CascadeType.ALL;
 
 @Entity
-public class Proiecte {
+public class Proiecte implements Serializable {
 	@Id
-	@GeneratedValue(strategy = AUTO)
+//	@GeneratedValue(strategy = AUTO)
 	private Integer IDProiect;
 	private String NumeProiect;
 	private Integer IDCoordonator;

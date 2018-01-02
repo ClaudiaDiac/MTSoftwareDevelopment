@@ -28,8 +28,8 @@ private static Logger logger = Logger.getLogger(LocatieService.class);
 	@Override
 	public Locatie addLocatie(Locatie locatieToAdd){
 		em.persist(locatieToAdd);
-		em.flush();
-		em.refresh(locatieToAdd);
+//		em.flush();
+//		em.refresh(locatieToAdd);
 		return locatieToAdd;
 	}
 	@Override

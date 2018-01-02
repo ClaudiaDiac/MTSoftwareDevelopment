@@ -1,5 +1,6 @@
 package org.app.service.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,18 +9,18 @@ import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.AUTO;
 
 @Entity
-public class Aplicanti {
+public class Aplicanti implements Serializable {
 	@Id
-	@GeneratedValue(strategy = AUTO)
+//	@GeneratedValue(strategy = AUTO)
 	private Integer IDAplicant;
 	private String NumeAplicant;
-	private Date DataAplicare;
+	private String DataAplicare;
 	private Integer Telefon;
 	private String Email;
 	private String Facultate;
 	private Integer AnStudii;
 	private String DomeniuInternship;
-	private Date DataSelectie;
+	private String DataSelectie;
 	private String Selectat;
 	
 	@ManyToOne
@@ -28,8 +29,8 @@ public class Aplicanti {
 	@ManyToOne
 	private InterviuTehnic inttehnic;
 
-	public Aplicanti(Integer iDAplicant, String numeAplicant, Date dataAplicare, Integer telefon, String email,
-			String facultate, Integer anStudii, String domeniuInternship, Date dataSelectie, String selectat,
+	public Aplicanti(Integer iDAplicant, String numeAplicant, String dataAplicare, Integer telefon, String email,
+			String facultate, Integer anStudii, String domeniuInternship, String dataSelectie, String selectat,
 			Internship internsip, InterviuTehnic inttehnic) {
 		super();
 		IDAplicant = iDAplicant;
@@ -66,11 +67,11 @@ public class Aplicanti {
 		NumeAplicant = numeAplicant;
 	}
 
-	public Date getDataAplicare() {
+	public String getDataAplicare() {
 		return DataAplicare;
 	}
 
-	public void setDataAplicare(Date dataAplicare) {
+	public void setDataAplicare(String dataAplicare) {
 		DataAplicare = dataAplicare;
 	}
 
@@ -114,11 +115,11 @@ public class Aplicanti {
 		DomeniuInternship = domeniuInternship;
 	}
 
-	public Date getDataSelectie() {
+	public String getDataSelectie() {
 		return DataSelectie;
 	}
 
-	public void setDataSelectie(Date dataSelectie) {
+	public void setDataSelectie(String dataSelectie) {
 		DataSelectie = dataSelectie;
 	}
 

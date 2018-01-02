@@ -61,18 +61,25 @@ public class TestEvaluareFinalaDataServiceEJBArq {
 	public void test3_AddEvaluareFinala(){
 		logger.info("DEBUG: Jnuit TESTING: testAddEvaluareFinala ...");
 		
-		Integer evfinalToAdd = 3;
-		for( int i=1; i<= evfinalToAdd; i++){
+//		Integer evfinalToAdd = 3;
+//		for( int i=1; i<= evfinalToAdd; i++){
 			service.addEvaluareFinala(new EvaluareFinala(100, "Popa Dan", 3000, "Pozitiv", "Acceptat", null, null));
-		}
+			service.addEvaluareFinala(new EvaluareFinala(101, "Popescu Iuliana", 3001, "Pozitiv", "Acceptat", null, null));
+			service.addEvaluareFinala(new EvaluareFinala(102, "Talcu Daria", 3002, "Negativ", "Respins", null, null));
+			service.addEvaluareFinala(new EvaluareFinala(103, "Craciun Teodor", 3003, "Pozitiv", "Acceptat", null, null));
+			service.addEvaluareFinala(new EvaluareFinala(104, "Luca Rares", 3004, "Negativ", "Respins", null, null));
+//		}
 		Collection<EvaluareFinala> evfinal = service.getEvaluariFinale();
-		assertTrue("Fail to add evaluare finala!", evfinal.size() == evfinalToAdd);
+//		assertTrue("Fail to add evaluare finala!", evfinal.size() == evfinalToAdd);
 	}
 	
 	@Test
 	public void test2_DeleteEvaluareFinala(){
 		logger.info("DEBUG: Junit TESTING: testDeleteEvaluareFinala");
 		
+		Collection<EvaluareFinala> evfinal = service.getEvaluariFinale();
+		for(EvaluareFinala ef: evfinal)
+			service.removeEvaluareFinala(ef);
 		Collection<EvaluareFinala> evfinalAfterDelete = service.getEvaluariFinale();
 		assertTrue("Fail to read evaluari finale!", evfinalAfterDelete.size() == 0);
 	}

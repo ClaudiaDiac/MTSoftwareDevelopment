@@ -61,12 +61,16 @@ public class TestPropuneriDataServiceEJBArq {
 	public void test3_AddPropuneri(){
 		logger.info("DEBUG: Junit TESTING: testAddPropuneri ...");
 		
-		Integer propunereToAdd = 3;
-		for(int i=1; i <= propunereToAdd; i++){
-			service.addPropuneri(new Propuneri(102, "Craciun Maria", 8, ".NET Developer", "Oferta3", null, null));
-		}
+//		Integer propunereToAdd = 3;
+//		for(int i=1; i <= propunereToAdd; i++){
+			service.addPropuneri(new Propuneri(100, "Popa Dan", 6, ".NET Developer", "Oferta pentru .NETdeveloper", null, null));
+			service.addPropuneri(new Propuneri(101, "Popescu Iuliana", 7, "Software Tester", "Oferta pentru Software Tester", null, null));
+			service.addPropuneri(new Propuneri(103, "Craciun Teodor", 8, "Data Base Modeler", "Oferta pentru Data Base Modeler", null, null));
+			service.addPropuneri(new Propuneri(105, "Tudose Lucian", 9, "Software Developer", "Oferta pentru Software Developer", null, null));
+			service.addPropuneri(new Propuneri(106, "Ivascu Daniel", 99, "Cyber Secutiry", "Oferta pentru Cyber Security", null, null));
+//		}
 		Collection<Propuneri> propunere = service.getPropunere();
-		assertTrue("Fail to add propuneri!", propunere.size() == propunereToAdd);
+//		assertTrue("Fail to add propuneri!", propunere.size() == propunereToAdd);
 	}
 	
 	@Test

@@ -18,11 +18,11 @@ public class InternshipFactory {
 		Internship internship = new Internship(IDInternship, DomeniuInternship, PerioadaInternship, DataIncepere, DataSfarsire, IDTest, promovari, aplicant);
 		List<Promovare> promovariInternship = new ArrayList<>();
 		
-		Date dataPromovare = new Date();
-		Long interval = (long)(301 * 24 *60 * 60 * 1000);
+//		Date dataPromovare = new Date();
+//		Long interval = (long)(301 * 24 *60 * 60 * 1000);
 		
 		for(int i=0; i<=promovareCount-1; i++){
-			promovariInternship.add(new Promovare(2001, new Date(dataPromovare.getTime() + i * interval), 21, "Program Mentorat 2", 201, "Laur Alexandra", "Analist", null, internship));
+			promovariInternship.add(new Promovare(2001, "", 21, "Program Mentorat 2", 201, "Laur Alexandra", "Analist", null, internship));
 		}
 		internship.setPromovari(promovariInternship);
 		return internship;

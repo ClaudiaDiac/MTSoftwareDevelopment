@@ -21,7 +21,7 @@ public class PropuneriFactory {
 		Long interval = (long)(301 * 24 *60 * 60 * 1000);
 		
 		for (int i=0; i<=angajatiCount-1; i++){
-			angajatPropuneri.add(new Angajati(1, "Andrei Stefan", 7, "Analist", 2000, "Determinat", new Date(dataPromovare.getTime() + i * interval), propuneri));
+			angajatPropuneri.add(new Angajati(1, "Andrei Stefan", 7, "Analist", 2000, "Determinat", "", propuneri));
 			
 		}
 		propuneri.setAngajat(angajatPropuneri);

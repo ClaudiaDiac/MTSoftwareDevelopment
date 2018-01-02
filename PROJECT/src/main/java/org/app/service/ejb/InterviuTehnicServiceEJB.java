@@ -28,8 +28,8 @@ public class InterviuTehnicServiceEJB implements InterviuTehnicService {
 	@Override
 	public InterviuTehnic addInterviuTehnic(InterviuTehnic itToAdd){
 		em.persist(itToAdd);
-		em.flush();
-		em.refresh(itToAdd);
+//		em.flush();
+//		em.refresh(itToAdd);
 		return itToAdd;
 	}
 	@Override

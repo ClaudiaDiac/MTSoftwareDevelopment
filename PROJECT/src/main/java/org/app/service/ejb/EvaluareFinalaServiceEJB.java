@@ -29,8 +29,8 @@ public class EvaluareFinalaServiceEJB implements EvaluareFinalaService {
 	@Override
 	public EvaluareFinala addEvaluareFinala(EvaluareFinala evfToAdd){
 		em.persist(evfToAdd);
-		em.flush();
-		em.refresh(evfToAdd);
+//		em.flush();
+//		em.refresh(evfToAdd);
 		return evfToAdd;
 	}
 	@Override
@@ -38,7 +38,7 @@ public class EvaluareFinalaServiceEJB implements EvaluareFinalaService {
 		return em.find(EvaluareFinala.class, IDIntern);
 	}
 	public Collection<EvaluareFinala> getEvaluariFinale(){
-		List<EvaluareFinala> evaluarifinale = em.createQuery("SELECT ef FROM EvaluareFinala", EvaluareFinala.class)
+		List<EvaluareFinala> evaluarifinale = em.createQuery("SELECT ef FROM EvaluareFinala ef", EvaluareFinala.class)
 				.getResultList();
 		return evaluarifinale;
 	}

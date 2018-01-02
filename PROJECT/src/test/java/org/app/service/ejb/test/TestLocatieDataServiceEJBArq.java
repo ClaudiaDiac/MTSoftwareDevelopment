@@ -51,7 +51,7 @@ public class TestLocatieDataServiceEJBArq {
 	}
 	
     @Test
-	public void tes4_GetLocatii(){
+	public void test4_GetLocatii(){
 		logger.info("DEBUG : Junit TESTIN: testGetLocatii ...");
 		
 		Collection<Locatie> locatii = service.getLocatii();
@@ -62,14 +62,16 @@ public class TestLocatieDataServiceEJBArq {
 	public void test3_AddLocatie(){
 		logger.info("DEBUG: Junit TESTING: testAddLocatie ...");
 		
-		Integer locatiiToAdd = 3;
-		for(int i=1; i<=locatiiToAdd; i++){
-			service.addLocatie(new Locatie(20, "FEAA", null));
-			service.addLocatie(new Locatie(21, "Litere", null));
-			service.addLocatie(new Locatie(22, "Biologie", null));
-		}
+//		Integer locatiiToAdd = 3;
+//		for(int i=1; i<=locatiiToAdd; i++){
+			service.addLocatie(new Locatie(20, "Facultatea de Economie si Administrarea Afacerilor", null));
+			service.addLocatie(new Locatie(21, "Facultatea de Informatica", null));
+			service.addLocatie(new Locatie(22, "Facultatea de Automatica si Calculatoare", null));
+			service.addLocatie(new Locatie(23, "Facultatea de Matematica", null));
+			service.addLocatie(new Locatie(24, "Facultatea de Fizica", null));
+			
 		Collection<Locatie> locatii = service.getLocatii();
-		assertTrue("Fail to add locatii!", locatii.size() == locatiiToAdd);
+		
 	}
 	
 	@Test
@@ -77,6 +79,9 @@ public class TestLocatieDataServiceEJBArq {
 		logger.info("DEBUG: Junit TESTIN: testDeleteLocatie ...");
 		
 		Collection<Locatie> locatii = service.getLocatii();
+		
+		logger.info("DEBUG: Junit TESTIN: testDeleteLocatie ..." + locatii.size());
+		
 		for(Locatie l:locatii)
 			service.removeLocatie(l);
 		Collection<Locatie> locatiiAfterDelete = service.getLocatii();
