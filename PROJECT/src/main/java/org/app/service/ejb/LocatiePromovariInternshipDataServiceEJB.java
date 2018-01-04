@@ -38,7 +38,7 @@ public class LocatiePromovariInternshipDataServiceEJB extends EntityRepositoryBa
 	//	Date dataPromovare = new Date();
 	//	Long interval = (long) (301 * 24 *60 * 60 * 1000);
 	//	for (int i=0; i<=promovariCount-1; i++){
-			promovariLocatie.add(new Promovare(2005,  "", 25, "Mod Promovare", 206, "Nume Promoter", "Domeniu", locatii, null ));
+			promovariLocatie.add(new Promovare(2005,  "", 25, "Mod Promovare", 205, "Nume Promoter", "Domeniu", locatii, null ));
 	//	}
 		locatii.setPromovari(promovariLocatie);
 		this.add(locatii);

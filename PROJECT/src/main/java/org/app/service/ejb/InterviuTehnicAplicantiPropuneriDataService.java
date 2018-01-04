@@ -4,7 +4,7 @@ import org.app.patterns.EntityRepository;
 import org.app.service.entities.Aplicanti;
 import org.app.service.entities.InterviuTehnic;
 
-public interface InterviuTehnicAplicantPropuneriDataService extends EntityRepository<InterviuTehnic>{
+public interface InterviuTehnicAplicantiPropuneriDataService extends EntityRepository<InterviuTehnic>{
 
 	InterviuTehnic createNewInterviuT(Integer IDIAplicant);
 	

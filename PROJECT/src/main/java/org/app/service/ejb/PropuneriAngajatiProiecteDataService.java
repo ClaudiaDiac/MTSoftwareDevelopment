@@ -6,7 +6,7 @@ import org.app.service.entities.Propuneri;
 
 public interface PropuneriAngajatiProiecteDataService extends EntityRepository<Propuneri>{
 
-	Propuneri createNewPropunere(Integer IDPropunere);
+	Propuneri createNewPropunere(Integer IDIntern);
 	
 	Angajati getAngajatiById(Integer IDAngajat);
 	
