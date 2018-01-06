@@ -47,9 +47,9 @@ public class TestLocatiePromovareInternshipDataServiceEJBArq {
 	
 	@Test
 	public void test4_GetLocatie(){
-		logger.info("DEBUG: Jnuit TESTING: testGetLocatie 26 ...");
-		Locatie locatii = service.getById(26);
-		assertNotNull("Fail to get Locatie 26!", locatii);
+		logger.info("DEBUG: Jnuit TESTING: testGetLocatie 25 ...");
+		Locatie locatii = service.getById(25);
+		assertNotNull("Fail to get Locatie 25!", locatii);
 	}
 	
 	@Test 
