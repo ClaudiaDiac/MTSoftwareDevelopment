@@ -1,6 +1,7 @@
 package org.app.service.ejb.test;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.util.List;
 
@@ -76,6 +77,6 @@ public class TestProiecteInterniEvaluareFinalaDataServiceEJBArq {
 		if(proiect != null)
 			service.remove(proiect);
 			proiect = service.getById(3005);
-		assertNotNull("Fail to delete Proiecte 3005!", proiect);
+		assertNull("Fail to delete Proiecte 3005!", proiect);
 	}
 }

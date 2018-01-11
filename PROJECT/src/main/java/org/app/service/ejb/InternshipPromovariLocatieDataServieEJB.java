@@ -38,7 +38,7 @@ public class InternshipPromovariLocatieDataServieEJB extends EntityRepositoryBas
 		Date its = new Date();
 		Long interval = (long) (301 * 24 * 60 *60 * 1000);
 		
-		Internship intersip = new Internship(IDInternship, "Java Programmer", "3 luni", new Date(its.getTime() + + 68 * interval), new Date(its.getTime() + 101 * interval), 1660, null, null );
+		Internship intersip = new Internship(IDInternship, "Java Programmer", "3 luni", new Date(its.getTime() +  68 * interval), new Date(its.getTime() + 101 * interval), 1660, null, null );
 		List<Promovare> promovariInternship = new ArrayList<>();
 		
 		promovariInternship.add(new Promovare(2006, "10-05-2018", 26, "Prezentare Curs", 206, "Olariu Matei", "Java Programming", null, intersip));

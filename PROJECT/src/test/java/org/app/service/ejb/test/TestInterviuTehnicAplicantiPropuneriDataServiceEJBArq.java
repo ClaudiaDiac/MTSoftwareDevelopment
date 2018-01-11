@@ -34,7 +34,7 @@ public class TestInterviuTehnicAplicantiPropuneriDataServiceEJBArq {
 	@Deployment
 	public static Archive<?> createDeployment(){
 		return ShrinkWrap
-				.create(WebArchive.class, "scrum-test-ejb-war")
+				.create(WebArchive.class, "scrum-test-ejb.war")
 				.addPackage(EntityRepository.class.getPackage()).addPackage(InterviuTehnic.class.getPackage())
 				.addClass(PropuneriService.class).addClass(PropuneriServiceEJB.class)
 				.addClass(InterviuTehnicAplicantiPropuneriDataService.class).addClass(InterviuTehnicAplicantiPropuneriDataServiceEJB.class)
@@ -76,6 +76,7 @@ public class TestInterviuTehnicAplicantiPropuneriDataServiceEJBArq {
 		InterviuTehnic inteh = service.getById(1005);
 		if(inteh != null)
 			service.remove(inteh);
+		inteh = service.getById(1005);
 		assertNull("Fail to delete Interviu Tehnic 1005!", inteh);
 	}
 }

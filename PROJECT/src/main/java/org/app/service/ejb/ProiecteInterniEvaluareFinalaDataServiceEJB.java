@@ -36,6 +36,7 @@ public class ProiecteInterniEvaluareFinalaDataServiceEJB extends EntityRepositor
 		Proiecte proiect = new Proiecte(IDProiect, "Proiect Nou", 35, "Craciun Laurentiu", null);
 		List<Intern> internProiecte = new ArrayList<>();
 		 internProiecte.add(new Intern(105, "Secleanu Alexandru", 15, "Parlu Codrin", 3005, null, proiect, null));
+		 
 		 proiect.setInterni(internProiecte);
 		 this.add(proiect);
 		 return proiect;
@@ -46,7 +47,7 @@ public class ProiecteInterniEvaluareFinalaDataServiceEJB extends EntityRepositor
 	}
 	
 	public String getMessage(){
-		return "ProjectSprint Data Service isworking...";
+		return "ProjectSprint Data Service is working...";
 	}
 
 	

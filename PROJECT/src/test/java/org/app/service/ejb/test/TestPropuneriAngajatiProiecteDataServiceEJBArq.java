@@ -47,14 +47,14 @@ public class TestPropuneriAngajatiProiecteDataServiceEJBArq {
 	
 	@Test
 	public void test4_GetPropuneri(){
-		logger.info("DEBUG: Junit TESTING: testGetPropuneri 105 ...");
-		Propuneri propunere = service.getById(105);
-		assertNotNull("Fail to get Propunere 105!", propunere);
+		logger.info("DEBUG: Junit TESTING: testGetPropuneri 107 ...");
+		Propuneri propunere = service.getById(107);
+		assertNotNull("Fail to get Propunere 107!", propunere);
 	}
 	
 	@Test
 	public void test3_CreateNewPropunere(){
-		Propuneri propunere = service.createNewPropunere(105);
+		Propuneri propunere = service.createNewPropunere(107);
 		assertNotNull("Fail to create new propunere in repository!", propunere);
 		
 		propunere.setNumePost(propunere.getNumePost() + " - changed by test client");
@@ -65,18 +65,18 @@ public class TestPropuneriAngajatiProiecteDataServiceEJBArq {
 		assertNotNull("Fail to save new propunere in repository!", propunere);
 		logger.info("DEBUG createNewPropunere: propunere changed: " + propunere);
 		
-		propunere = service.getById(105);
+		propunere = service.getById(107);
 		assertNotNull("Fail to find changed propunere in repository!", propunere);
 		logger.info("DEBUG createNewPropunere: queried propunere" + propunere);
 	}
 	
 	@Test
 	public void test2_DeletePropunere(){
-		logger.info("DEBUG: Junit TESTING: testDeletePropunere 105 ...");
-		Propuneri propunere = service.getById(105);
+		logger.info("DEBUG: Junit TESTING: testDeletePropunere 107 ...");
+		Propuneri propunere = service.getById(107);
 		if(propunere != null)
-			service.refresh(propunere);
-		propunere = service.getById(105);
-		assertNull("Fail to delete Propunere 105!", propunere);
+			service.remove(propunere);
+		propunere = service.getById(107);
+		assertNull("Fail to delete Propunere 107!", propunere);
 	}
 }

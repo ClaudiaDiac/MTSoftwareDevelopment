@@ -29,8 +29,8 @@ public class InterviuTehnicAplicantiPropuneriDataServiceEJB extends EntityReposi
 	@PostConstruct
 	public void init(){
 		aplicantRepository = new EntityRepositoryBase<Aplicanti>(this.em, Aplicanti.class);
-		logger.info("POSTCONSTRUCT-INIT aplicantRepository: " + this.aplicantRepository);;
-		logger.info("POSTCONSTRUCT-INIT propunereService: " + this.propunereService);;
+		logger.info("POSTCONSTRUCT-INIT aplicantRepository: " + this.aplicantRepository);
+		logger.info("POSTCONSTRUCT-INIT propunereService: " + this.propunereService);
 	}
 	
 	public InterviuTehnic createNewInterviuT(Integer IDAplicant){
@@ -47,7 +47,7 @@ public class InterviuTehnicAplicantiPropuneriDataServiceEJB extends EntityReposi
 		
 	}
 	
-	public Aplicanti getAplicantiById(Integer IDAplicant){
+	public Aplicanti getAplicantById(Integer IDAplicant){
 		return aplicantRepository.getById(IDAplicant);
 	}
 	

@@ -29,12 +29,12 @@ public class EvaluareFinalaPropuneriInterviuTehnicDataServiceEJB extends EntityR
 	public void init(){
 		
 		propunereRepository = new EntityRepositoryBase<Propuneri>(this.em, Propuneri.class);
-		logger.info("POSTCONSTRUCT-INIT propunereRepository: " + this.propunereRepository);;
+		logger.info("POSTCONSTRUCT-INIT propunereRepository: " + this.propunereRepository);
 		logger.info("POSTCONSTRUCT-INIT itService: " + this.itService);
 	}
 	
 	public EvaluareFinala createNewEvaluareFinala(Integer IDIntern){
-		EvaluareFinala evfinal = new EvaluareFinala(IDIntern, "Miru Paul",3003, "Pozitiv", "Acceptat", null, null);
+		EvaluareFinala evfinal = new EvaluareFinala(IDIntern, "Miru Paul", 3003, "Pozitiv", "Acceptat", null, null);
 		List<Propuneri> propunereEvaluareFinala = new ArrayList<>();
 		
 		propunereEvaluareFinala.add(new Propuneri(IDIntern, "Miru Paul", 8, "Data Base Modeler", "Oferta pentru Data Base Modeler", evfinal, null));

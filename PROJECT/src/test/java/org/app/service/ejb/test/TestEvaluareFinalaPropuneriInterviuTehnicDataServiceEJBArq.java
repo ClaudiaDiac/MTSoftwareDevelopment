@@ -1,6 +1,7 @@
 package org.app.service.ejb.test;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 import java.util.List;
 
@@ -46,14 +47,14 @@ public class TestEvaluareFinalaPropuneriInterviuTehnicDataServiceEJBArq {
 	
 	@Test
 	public void test4_GetEvaluareFinala(){
-		logger.info("DEBUG: Junit TESTING: testGetEvaluareFinala 105 ...");
-		EvaluareFinala evf = service.getById(105);
-		assertNotNull("Fail to get Evaluare Finala 105!", evf);
+		logger.info("DEBUG: Junit TESTING: testGetEvaluareFinala 106 ...");
+		EvaluareFinala evf = service.getById(106);
+		assertNotNull("Fail to get Evaluare Finala 106!", evf);
 	}
 	
 	@Test
-	public void test3_CreateNewevaluareFinala(){
-		EvaluareFinala evf = service.createNewEvaluareFinala(105);
+	public void test3_CreateNewEvaluareFinala(){
+		EvaluareFinala evf = service.createNewEvaluareFinala(106);
 		assertNotNull("Fail to create new evaluare finala in repository!", evf);
 		
 		evf.setTipFeedback(evf.getTipFeedback() + " - changed by test client");
@@ -64,18 +65,18 @@ public class TestEvaluareFinalaPropuneriInterviuTehnicDataServiceEJBArq {
 		assertNotNull("Fail to save new evaluare finala in repository!", evf);
 		logger.info("DEBUG createNewEvaluareFinala: EvaluareFinala changed: " + evf);
 		
-		evf = service.getById(105);
+		evf = service.getById(106);
 		assertNotNull("Fail to find changed evaluare finala in repository!", evf);
 		logger.info("DEBUG createNewEvaluareFinala: queried evaluare" + evf);
 	}
 	
 	@Test
 	public void test2_DeleteEvaluareFinala(){
-		logger.info("DEBUG: Jnuit TESTING: testDeleteEvaluare 105 ...");
-		EvaluareFinala evf = service.getById(105);
-		if( evf != null)
+		logger.info("DEBUG: Jnuit TESTING: testDeleteEvaluare 106 ...");
+		EvaluareFinala evf = service.getById(106);
+		if(evf != null)
 			service.remove(evf);
-		evf = service.getById(105);
-		assertNotNull("Fail to delete evaluare finala 105!", evf);
+		evf = service.getById(106);
+		assertNull("Fail to delete evaluare finala 106!", evf);
 	}
 }
