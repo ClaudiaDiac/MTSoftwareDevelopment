@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.AUTO;
 import javax.persistence.ManyToOne;
+import javax.xml.bind.annotation.XmlElement;
 
 @Entity
 public class Promovare implements Serializable {
@@ -149,5 +150,11 @@ public class Promovare implements Serializable {
 				+ "]";
 	}
 	
+	public static String BASE_URL = Locatie.BASE_URL;
+	@XmlElement(name = "link")
+	public AtomLink getLink() throws Exception {
+		String restUrl = BASE_URL + this.getLocatii().getNumeLocatie() + "/promovare/" + this.getModPromovare();
+		return new AtomLink(null, restUrl, "get-promovare");
+	}
 	
 }

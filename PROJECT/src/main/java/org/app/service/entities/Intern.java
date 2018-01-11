@@ -3,11 +3,17 @@ package org.app.service.entities;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.AUTO;
 
 import java.io.Serializable;
 
+@XmlRootElement(name = "intern")
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity
 public class Intern implements Serializable {
 	@Id
@@ -44,6 +50,7 @@ public class Intern implements Serializable {
 		super();
 	}
 
+	@XmlElement
 	public Integer getIDIntern() {
 		return IDIntern;
 	}
@@ -52,6 +59,7 @@ public class Intern implements Serializable {
 		IDIntern = iDIntern;
 	}
 
+	@XmlElement
 	public String getNumeIntern() {
 		return NumeIntern;
 	}
@@ -60,6 +68,7 @@ public class Intern implements Serializable {
 		NumeIntern = numeIntern;
 	}
 
+	@XmlElement
 	public Integer getIDMentor() {
 		return IDMentor;
 	}
@@ -68,6 +77,7 @@ public class Intern implements Serializable {
 		IDMentor = iDMentor;
 	}
 
+	@XmlElement
 	public String getNumeMentor() {
 		return NumeMentor;
 	}
@@ -76,6 +86,7 @@ public class Intern implements Serializable {
 		NumeMentor = numeMentor;
 	}
 
+	@XmlElement
 	public Integer getIDProiect() {
 		return IDProiect;
 	}
@@ -84,6 +95,7 @@ public class Intern implements Serializable {
 		IDProiect = iDProiect;
 	}
 
+	@XmlElement
 	public InterviuTehnic getInttehnic() {
 		return inttehnic;
 	}
@@ -92,6 +104,7 @@ public class Intern implements Serializable {
 		this.inttehnic = inttehnic;
 	}
 
+	@XmlElement
 	public Proiecte getProiect() {
 		return proiect;
 	}
@@ -100,6 +113,7 @@ public class Intern implements Serializable {
 		this.proiect = proiect;
 	}
 
+	@XmlElement
 	public EvaluareFinala getEfinal() {
 		return efinal;
 	}
@@ -139,5 +153,11 @@ public class Intern implements Serializable {
 				+ ", NumeMentor=" + NumeMentor + ", IDProiect=" + IDProiect + ", efinal=" + efinal + "]";
 	}
 
+	public static String BASE_URL = Proiecte.BASE_URL;
+	@XmlElement(name = "link")
+	public AtomLink getLink() throws Exception {
+		String restUrl = BASE_URL + this.getProiect().getNumeProiect() + "/interni/" + this.getNumeIntern();
+		return new AtomLink(null, restUrl, "get-intern");
+	}
 	
 }

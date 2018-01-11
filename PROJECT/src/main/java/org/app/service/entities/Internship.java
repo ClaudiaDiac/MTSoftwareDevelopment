@@ -9,10 +9,17 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.AUTO;
 import static javax.persistence.CascadeType.ALL;
 
+@XmlRootElement(name = "internship")
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity
 public class Internship implements Serializable {
 	@Id
@@ -47,6 +54,7 @@ public class Internship implements Serializable {
 		super();
 	}
 
+	@XmlElement
 	public Integer getIDInternship() {
 		return IDInternship;
 	}
@@ -55,6 +63,7 @@ public class Internship implements Serializable {
 		IDInternship = iDInternship;
 	}
 
+	@XmlElement
 	public String getDomeniuInternship() {
 		return DomeniuInternship;
 	}
@@ -63,6 +72,7 @@ public class Internship implements Serializable {
 		DomeniuInternship = domeniuInternship;
 	}
 
+	@XmlElement
 	public String getPerioadaInternship() {
 		return PerioadaInternship;
 	}
@@ -71,6 +81,7 @@ public class Internship implements Serializable {
 		PerioadaInternship = perioadaInternship;
 	}
 
+	@XmlElement
 	public Date getDataIncepere() {
 		return DataIncepere;
 	}
@@ -79,6 +90,7 @@ public class Internship implements Serializable {
 		DataIncepere = dataIncepere;
 	}
 
+	@XmlElement
 	public Date getDataSfarsire() {
 		return DataSfarsire;
 	}
@@ -87,6 +99,7 @@ public class Internship implements Serializable {
 		DataSfarsire = dataSfarsire;
 	}
 
+	@XmlElement
 	public Integer getIDTest() {
 		return IDTest;
 	}
@@ -95,6 +108,7 @@ public class Internship implements Serializable {
 		IDTest = iDTest;
 	}
 
+	@XmlElementWrapper(name = "promovari") @XmlElement(name = "promovare")
 	public List<Promovare> getPromovari() {
 		return promovari;
 	}
@@ -103,6 +117,7 @@ public class Internship implements Serializable {
 		this.promovari = promovari;
 	}
 
+	@XmlElementWrapper(name = "aplicant") @XmlElement(name = "aplicanti")
 	public List<Aplicanti> getAplicant() {
 		return aplicant;
 	}
@@ -111,16 +126,6 @@ public class Internship implements Serializable {
 		this.aplicant = aplicant;
 	}
 
-	public List<Promovare> getListPromoInter()
-	{
-		return promovari;
-	}
-	
-	public List<Aplicanti> getListAplInter()
-	{
-		return aplicant;
-	}
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

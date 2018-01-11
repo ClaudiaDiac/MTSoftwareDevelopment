@@ -9,10 +9,17 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.AUTO;
 import static javax.persistence.CascadeType.ALL;
 
+@XmlRootElement(name = "evaluaref")
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity
 public class EvaluareFinala implements Serializable {
 	@Id
@@ -45,6 +52,7 @@ public class EvaluareFinala implements Serializable {
 		super();
 	}
 
+	@XmlElement
 	public Integer getIDIntern() {
 		return IDIntern;
 	}
@@ -53,6 +61,7 @@ public class EvaluareFinala implements Serializable {
 		IDIntern = iDIntern;
 	}
 
+	@XmlElement
 	public String getNumeIntern() {
 		return NumeIntern;
 	}
@@ -61,6 +70,7 @@ public class EvaluareFinala implements Serializable {
 		NumeIntern = numeIntern;
 	}
 
+	@XmlElement
 	public Integer getIDProiect() {
 		return IDProiect;
 	}
@@ -69,6 +79,7 @@ public class EvaluareFinala implements Serializable {
 		IDProiect = iDProiect;
 	}
 
+	@XmlElement
 	public String getTipFeedback() {
 		return TipFeedback;
 	}
@@ -77,6 +88,7 @@ public class EvaluareFinala implements Serializable {
 		TipFeedback = tipFeedback;
 	}
 
+	@XmlElement
 	public String getDecizieFinala() {
 		return DecizieFinala;
 	}
@@ -85,6 +97,7 @@ public class EvaluareFinala implements Serializable {
 		DecizieFinala = decizieFinala;
 	}
 
+	@XmlElementWrapper(name = "interni") @XmlElement(name = "intern")
 	public List<Intern> getInterni() {
 		return interni;
 	}
@@ -93,6 +106,7 @@ public class EvaluareFinala implements Serializable {
 		this.interni = interni;
 	}
 
+	@XmlElementWrapper(name = "propunere") @XmlElement(name = "propunere")
 	public List<Propuneri> getPropunere() {
 		return propunere;
 	}
@@ -100,17 +114,6 @@ public class EvaluareFinala implements Serializable {
 	public void setPropunere(List<Propuneri> propunere) {
 		this.propunere = propunere;
 	}
-	
-	public List<Intern> getListInterEval()
-	{
-		return interni;
-	}
-	
-	public List<Propuneri> getListPropEval()
-	{
-		return propunere;
-	}
-	
 	
 	@Override
 	public int hashCode() {
@@ -143,5 +146,12 @@ public class EvaluareFinala implements Serializable {
 				+ ", TipFeedback=" + TipFeedback + ", DecizieFinala=" + DecizieFinala + "]";
 	}
 
+	public static String BASE_URL = "http://localhost:8080/SCRUM/data/evaluaref/";
+	@XmlElement(name = "link")
+	public AtomLink getLink() throws Exception {
+		String restUrl = BASE_URL + this.getNumeIntern();
+		return new AtomLink(null, restUrl, "get-intern");
+	}
+	
 	
 }

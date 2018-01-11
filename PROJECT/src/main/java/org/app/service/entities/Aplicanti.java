@@ -5,9 +5,15 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.AUTO;
 
+@XmlRootElement(name = "aplicant")
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity
 public class Aplicanti implements Serializable {
 	@Id
@@ -51,6 +57,7 @@ public class Aplicanti implements Serializable {
 		super();
 	}
 
+	@XmlElement
 	public Integer getIDAplicant() {
 		return IDAplicant;
 	}
@@ -59,6 +66,7 @@ public class Aplicanti implements Serializable {
 		IDAplicant = iDAplicant;
 	}
 
+	@XmlElement
 	public String getNumeAplicant() {
 		return NumeAplicant;
 	}
@@ -67,6 +75,7 @@ public class Aplicanti implements Serializable {
 		NumeAplicant = numeAplicant;
 	}
 
+	@XmlElement
 	public String getDataAplicare() {
 		return DataAplicare;
 	}
@@ -75,6 +84,7 @@ public class Aplicanti implements Serializable {
 		DataAplicare = dataAplicare;
 	}
 
+	@XmlElement
 	public Integer getTelefon() {
 		return Telefon;
 	}
@@ -83,6 +93,7 @@ public class Aplicanti implements Serializable {
 		Telefon = telefon;
 	}
 
+	@XmlElement
 	public String getEmail() {
 		return Email;
 	}
@@ -91,6 +102,7 @@ public class Aplicanti implements Serializable {
 		Email = email;
 	}
 
+	@XmlElement
 	public String getFacultate() {
 		return Facultate;
 	}
@@ -99,6 +111,7 @@ public class Aplicanti implements Serializable {
 		Facultate = facultate;
 	}
 
+	@XmlElement
 	public Integer getAnStudii() {
 		return AnStudii;
 	}
@@ -107,6 +120,7 @@ public class Aplicanti implements Serializable {
 		AnStudii = anStudii;
 	}
 
+	@XmlElement
 	public String getDomeniuInternship() {
 		return DomeniuInternship;
 	}
@@ -115,6 +129,7 @@ public class Aplicanti implements Serializable {
 		DomeniuInternship = domeniuInternship;
 	}
 
+	@XmlElement
 	public String getDataSelectie() {
 		return DataSelectie;
 	}
@@ -123,6 +138,7 @@ public class Aplicanti implements Serializable {
 		DataSelectie = dataSelectie;
 	}
 
+	@XmlElement
 	public String getSelectat() {
 		return Selectat;
 	}
@@ -131,6 +147,7 @@ public class Aplicanti implements Serializable {
 		Selectat = selectat;
 	}
 
+	@XmlElement
 	public Internship getInternsip() {
 		return internsip;
 	}
@@ -139,6 +156,7 @@ public class Aplicanti implements Serializable {
 		this.internsip = internsip;
 	}
 
+	@XmlElement
 	public InterviuTehnic getInttehnic() {
 		return inttehnic;
 	}
@@ -180,5 +198,12 @@ public class Aplicanti implements Serializable {
 				+ DataSelectie + ", Selectat=" + Selectat + "]";
 	}
 
+	public static String BASE_URL = InterviuTehnic.BASE_URL;
+	@XmlElement(name = "link")
+	public AtomLink getLink() throws Exception {
+		String restUrl = BASE_URL + this.getInttehnic().getNumeAplicant() + "/aplicant/" + this.getNumeAplicant();
+		return new AtomLink(null, restUrl, "get-aplicant");
+	}
+	
 	
 }

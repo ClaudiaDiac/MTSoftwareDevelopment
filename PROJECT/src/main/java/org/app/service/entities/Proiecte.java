@@ -9,10 +9,17 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.AUTO;
 import static javax.persistence.CascadeType.ALL;
 
+@XmlRootElement(name = "proiecte")
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity
 public class Proiecte implements Serializable {
 	@Id
@@ -39,6 +46,7 @@ public class Proiecte implements Serializable {
 		super();
 	}
 
+	@XmlElement
 	public Integer getIDProiect() {
 		return IDProiect;
 	}
@@ -47,6 +55,7 @@ public class Proiecte implements Serializable {
 		IDProiect = iDProiect;
 	}
 
+	@XmlElement
 	public String getNumeProiect() {
 		return NumeProiect;
 	}
@@ -55,6 +64,7 @@ public class Proiecte implements Serializable {
 		NumeProiect = numeProiect;
 	}
 
+	@XmlElement
 	public Integer getIDCoordonator() {
 		return IDCoordonator;
 	}
@@ -63,6 +73,7 @@ public class Proiecte implements Serializable {
 		IDCoordonator = iDCoordonator;
 	}
 
+	@XmlElement
 	public String getNumeCoordonator() {
 		return NumeCoordonator;
 	}
@@ -71,6 +82,7 @@ public class Proiecte implements Serializable {
 		NumeCoordonator = numeCoordonator;
 	}
 
+	@XmlElementWrapper(name = "interni") @XmlElement(name = "intern")
 	public List<Intern> getInterni() {
 		return interni;
 	}
@@ -78,9 +90,7 @@ public class Proiecte implements Serializable {
 	public void setInterni(List<Intern> interni) {
 		this.interni = interni;
 	}
-	public List<Intern> getListInter() {
-		return interni;
-	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -112,5 +122,10 @@ public class Proiecte implements Serializable {
 				+ ", NumeCoordonator=" + NumeCoordonator + ", interni=" + interni + "]";
 	}
 
-	
+	public static String BASE_URL = "http://localhost:8080/SCRUM/data/proiecte/";
+	@XmlElement(name = "link")
+	public AtomLink getLink() throws Exception {
+		String restUrl = BASE_URL + this.getNumeProiect();
+		return new AtomLink(null, restUrl, "get-proiect");
+	}
 }

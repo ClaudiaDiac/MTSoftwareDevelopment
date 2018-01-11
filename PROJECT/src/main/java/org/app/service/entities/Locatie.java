@@ -4,11 +4,19 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import static javax.persistence.CascadeType.ALL;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+@XmlRootElement(name="locatie")
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity
 public class Locatie implements Serializable{
 	@Id
@@ -30,6 +38,7 @@ public class Locatie implements Serializable{
 		super();
 	}
 
+	@XmlElement
 	public Integer getIDLocatie() {
 		return IDLocatie;
 	}
@@ -38,6 +47,7 @@ public class Locatie implements Serializable{
 		IDLocatie = iDLocatie;
 	}
 
+	@XmlElement
 	public String getNumeLocatie() {
 		return NumeLocatie;
 	}
@@ -46,6 +56,7 @@ public class Locatie implements Serializable{
 		NumeLocatie = numeLocatie;
 	}
 
+	@XmlElementWrapper(name = "promovari") @XmlElement(name = "promovare")
 	public List<Promovare> getPromovari() {
 		return promovari;
 	}
@@ -54,9 +65,7 @@ public class Locatie implements Serializable{
 		this.promovari = promovari;
 	}
 	
-	public List<Promovare> getListPromo() {
-		return promovari;
-	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -87,5 +96,11 @@ public class Locatie implements Serializable{
 		return "Locatie [IDLocatie=" + IDLocatie + ", NumeLocatie=" + NumeLocatie + "]";
 	}
 
+	public static String BASE_URL = "http://localhost:8080/SCRUM/data/locatie/";
+	@XmlElement(name = "link")
+	public AtomLink getLink() throws Exception {
+		String restUrl = BASE_URL + this.getNumeLocatie();
+		return new AtomLink(null, restUrl, "get-locatie");
+	}
 	
 }

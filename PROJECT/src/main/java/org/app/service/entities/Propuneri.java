@@ -10,10 +10,17 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.AUTO;
 import static javax.persistence.CascadeType.ALL;
 
+@XmlRootElement(name = "propunere")
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity
 public class Propuneri implements Serializable {
 	@Id
@@ -47,6 +54,8 @@ public class Propuneri implements Serializable {
 		super();
 	}
 
+
+	@XmlElement
 	public Integer getIDIntern() {
 		return IDIntern;
 	}
@@ -55,6 +64,7 @@ public class Propuneri implements Serializable {
 		IDIntern = iDIntern;
 	}
 
+	@XmlElement
 	public String getNumeIntern() {
 		return NumeIntern;
 	}
@@ -63,6 +73,7 @@ public class Propuneri implements Serializable {
 		NumeIntern = numeIntern;
 	}
 
+	@XmlElement
 	public Integer getIDPost() {
 		return IDPost;
 	}
@@ -71,6 +82,7 @@ public class Propuneri implements Serializable {
 		IDPost = iDPost;
 	}
 
+	@XmlElement
 	public String getNumePost() {
 		return NumePost;
 	}
@@ -79,6 +91,7 @@ public class Propuneri implements Serializable {
 		NumePost = numePost;
 	}
 
+	@XmlElement
 	public String getOferta() {
 		return Oferta;
 	}
@@ -87,6 +100,7 @@ public class Propuneri implements Serializable {
 		Oferta = oferta;
 	}
 
+	@XmlElement
 	public EvaluareFinala getEfinala() {
 		return efinala;
 	}
@@ -95,6 +109,7 @@ public class Propuneri implements Serializable {
 		this.efinala = efinala;
 	}
 
+	@XmlElementWrapper(name = "angajat") @XmlElement(name = "angajati")
 	public List<Angajati> getAngajat() {
 		return angajat;
 	}
@@ -103,10 +118,6 @@ public class Propuneri implements Serializable {
 		this.angajat = angajat;
 	}
 	
-	public List<Angajati> getListProp() {
-		return angajat;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -138,5 +149,11 @@ public class Propuneri implements Serializable {
 				+ NumePost + ", Oferta=" + Oferta + ", efinala=" + efinala + ", angajat=" + angajat + "]";
 	}
 
+	public static String BASE_URL = EvaluareFinala.BASE_URL;
+	@XmlElement(name = "link")
+	public AtomLink getLink() throws Exception {
+		String restUrl = BASE_URL + this.getEfinala().getNumeIntern() + "/propunere/" + this.getOferta();
+		return new AtomLink(null, restUrl, "get-oferta");
+	}
 	
 }

@@ -9,10 +9,17 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.AUTO;
 import static javax.persistence.CascadeType.ALL;
 
+@XmlRootElement(name = "interviut")
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity
 public class InterviuTehnic implements Serializable{
 	@Id
@@ -49,6 +56,7 @@ public class InterviuTehnic implements Serializable{
 		super();
 	}
 
+	@XmlElement
 	public Integer getIDAplicant() {
 		return IDAplicant;
 	}
@@ -57,6 +65,7 @@ public class InterviuTehnic implements Serializable{
 		IDAplicant = iDAplicant;
 	}
 
+	@XmlElement
 	public String getNumeAplicant() {
 		return NumeAplicant;
 	}
@@ -65,6 +74,7 @@ public class InterviuTehnic implements Serializable{
 		NumeAplicant = numeAplicant;
 	}
 
+	@XmlElement
 	public Date getDataInterviu() {
 		return DataInterviu;
 	}
@@ -73,6 +83,7 @@ public class InterviuTehnic implements Serializable{
 		DataInterviu = dataInterviu;
 	}
 
+	@XmlElement
 	public String getDomeniuInternship() {
 		return DomeniuInternship;
 	}
@@ -81,6 +92,7 @@ public class InterviuTehnic implements Serializable{
 		DomeniuInternship = domeniuInternship;
 	}
 
+	@XmlElement
 	public Integer getIDTest() {
 		return IDTest;
 	}
@@ -89,6 +101,7 @@ public class InterviuTehnic implements Serializable{
 		IDTest = iDTest;
 	}
 
+	@XmlElement
 	public Integer getNotaTest() {
 		return NotaTest;
 	}
@@ -97,6 +110,7 @@ public class InterviuTehnic implements Serializable{
 		NotaTest = notaTest;
 	}
 
+	@XmlElement
 	public String getSituatie() {
 		return Situatie;
 	}
@@ -105,6 +119,7 @@ public class InterviuTehnic implements Serializable{
 		Situatie = situatie;
 	}
 
+	@XmlElementWrapper(name = "interni") @XmlElement(name = "intern")
 	public List<Intern> getInterni() {
 		return interni;
 	}
@@ -113,6 +128,7 @@ public class InterviuTehnic implements Serializable{
 		this.interni = interni;
 	}
 
+	@XmlElementWrapper(name = "aplicant") @XmlElement(name = "aplicanti")
 	public List<Aplicanti> getAplicant() {
 		return aplicant;
 	}
@@ -121,14 +137,6 @@ public class InterviuTehnic implements Serializable{
 		this.aplicant = aplicant;
 	}
 	
-	public List<Intern> getListInterInterv() {
-		return interni;
-	}
-	
-	public List<Aplicanti> getListAplInterv() {
-		return aplicant;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -161,5 +169,11 @@ public class InterviuTehnic implements Serializable{
 				+ NotaTest + ", Situatie=" + Situatie + ", interni=" + interni + ", aplicant=" + aplicant + "]";
 	}
 
+	public static String BASE_URL = "http://localhost:8080/SCRUM/data/interviut/";
+	@XmlElement(name = "link")
+	public AtomLink getLink() throws Exception {
+		String restUrl = BASE_URL + this.getDomeniuInternship();
+		return new AtomLink(null, restUrl, "get-domeniu");
+	}
 	
 }
