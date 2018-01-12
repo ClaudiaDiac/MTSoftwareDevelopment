@@ -102,5 +102,9 @@ public class Locatie implements Serializable{
 		String restUrl = BASE_URL + this.getNumeLocatie();
 		return new AtomLink(null, restUrl, "get-locatie");
 	}
+
+	public static Locatie toDTOAggregate(Locatie locatii) {
+		return new Locatie(locatii.IDLocatie, locatii.NumeLocatie, null);
+	}
 	
 }

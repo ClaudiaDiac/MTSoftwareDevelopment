@@ -100,7 +100,7 @@ public class Propuneri implements Serializable {
 		Oferta = oferta;
 	}
 
-	@XmlElement
+//	@XmlElement
 	public EvaluareFinala getEfinala() {
 		return efinala;
 	}

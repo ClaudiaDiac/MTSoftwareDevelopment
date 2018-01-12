@@ -175,5 +175,10 @@ public class InterviuTehnic implements Serializable{
 		String restUrl = BASE_URL + this.getDomeniuInternship();
 		return new AtomLink(null, restUrl, "get-domeniu");
 	}
+
+	public static InterviuTehnic toDTOAggregate(InterviuTehnic intt) {
+		return new InterviuTehnic( intt.IDAplicant, intt.NumeAplicant, intt.DataInterviu, 
+				intt.DomeniuInternship, intt.IDTest, intt.NotaTest, intt.Situatie, null, null);
+	}
 	
 }

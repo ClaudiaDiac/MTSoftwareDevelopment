@@ -6,8 +6,13 @@ import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.AUTO;
 import javax.persistence.ManyToOne;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement(name = "promovari")
+@XmlAccessorType(XmlAccessType.NONE)
 @Entity
 public class Promovare implements Serializable {
 	@Id
@@ -44,7 +49,7 @@ public class Promovare implements Serializable {
 	public Promovare() {
 		super();
 	}
-
+	@XmlElement
 	public Integer getIDPromovare() {
 		return IDPromovare;
 	}
@@ -53,6 +58,7 @@ public class Promovare implements Serializable {
 		IDPromovare = iDPromovare;
 	}
 
+	@XmlElement
 	public String getDataPromovare() {
 		return DataPromovare;
 	}
@@ -61,6 +67,7 @@ public class Promovare implements Serializable {
 		DataPromovare = dataPromovare;
 	}
 
+	@XmlElement
 	public Integer getIDLocatie() {
 		return IDLocatie;
 	}
@@ -69,6 +76,7 @@ public class Promovare implements Serializable {
 		IDLocatie = iDLocatie;
 	}
 
+	@XmlElement
 	public String getModPromovare() {
 		return ModPromovare;
 	}
@@ -85,6 +93,7 @@ public class Promovare implements Serializable {
 		IDPromoter = iDPromoter;
 	}
 
+	@XmlElement
 	public String getNumePromotor() {
 		return NumePromotor;
 	}
@@ -93,6 +102,7 @@ public class Promovare implements Serializable {
 		NumePromotor = numePromotor;
 	}
 
+	@XmlElement
 	public String getDomeniuInternship() {
 		return DomeniuInternship;
 	}

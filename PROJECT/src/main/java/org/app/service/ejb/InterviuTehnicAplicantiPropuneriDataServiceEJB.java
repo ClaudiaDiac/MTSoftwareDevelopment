@@ -2,6 +2,7 @@ package org.app.service.ejb;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -9,13 +10,26 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import org.app.patterns.EntityRepository;
 import org.app.patterns.EntityRepositoryBase;
 import org.app.service.entities.Aplicanti;
+import org.app.service.entities.EvaluareFinala;
 import org.app.service.entities.InterviuTehnic;
 import org.jboss.logging.Logger;
 
+@Path("interviut")
 @Stateless @LocalBean
 public class InterviuTehnicAplicantiPropuneriDataServiceEJB extends EntityRepositoryBase<InterviuTehnic> implements InterviuTehnicAplicantiPropuneriDataService, Serializable{
 
@@ -55,4 +69,54 @@ public class InterviuTehnicAplicantiPropuneriDataServiceEJB extends EntityReposi
 		return "InterviuTehnicSprint DataService is working...";
 	}
 
+	@GET @Path("/{IDAplicant}")
+	@Produces ({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	public InterviuTehnic getById(@PathParam("IDAplicant") Integer IDAplicant){
+		InterviuTehnic intt = super.getById(IDAplicant);
+		logger.info("**** DEBUG REST getById(" + IDAplicant + ") =" + intt);
+		return intt;
+	}
+	
+	@GET
+	@Produces({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	public Collection<InterviuTehnic> toCollection(){
+		logger.info("**** DEBUG REST toCollection()");
+		return super.toCollection();
+	}
+	
+	@POST
+	@Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	@Produces ({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	public Collection<InterviuTehnic> addIntoCollection(InterviuTehnic intt){
+		super.add(intt);
+		return super.toCollection();
+	}
+	
+	@DELETE
+	@Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	@Produces ({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+	public Collection<InterviuTehnic> removeFromCollection(InterviuTehnic intt){
+		logger.info("DEBUG: called Remove - interviutehnic: " + intt);
+		super.remove(intt);
+		return super.toCollection();
+	}
+	
+	@DELETE @Path("/{IDAplicant}")
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+	public void remove (@PathParam("IDAplicant") Integer IDAplicant){
+		logger.info("DEBUG: called REMOVE - ById() for interviutehnic >>>>> simplified ! + id");
+		InterviuTehnic intt = super.getById(IDAplicant);
+		super.remove(intt);
+	}
+	
+	@PUT @Path("/{IDAplicant}")
+	@Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	@Produces ({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+	@Override
+	public InterviuTehnic add(InterviuTehnic intt){
+		intt = super.add(intt);
+		return InterviuTehnic.toDTOAggregate(intt);
+	}
 }

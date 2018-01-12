@@ -32,7 +32,8 @@ public class Proiecte implements Serializable {
 	@OneToMany(mappedBy="proiect", cascade = ALL, fetch = FetchType.EAGER)
 	private List<Intern> interni = new ArrayList<>();
 
-	public Proiecte(Integer iDProiect, String numeProiect, Integer iDCoordonator, String numeCoordonator,
+	public Proiecte(Integer iDProiect, String numeProiect, 
+			Integer iDCoordonator, String numeCoordonator,
 			List<Intern> interni) {
 		super();
 		IDProiect = iDProiect;
@@ -128,4 +129,11 @@ public class Proiecte implements Serializable {
 		String restUrl = BASE_URL + this.getNumeProiect();
 		return new AtomLink(null, restUrl, "get-proiect");
 	}
+
+	public static Proiecte toDOAggregate(Proiecte proiect) {
+		return new Proiecte(proiect.IDProiect, proiect.NumeProiect, 
+				proiect.IDCoordonator, proiect.NumeCoordonator, null);
+	}
+
+	
 }

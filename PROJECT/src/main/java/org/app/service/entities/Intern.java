@@ -95,7 +95,7 @@ public class Intern implements Serializable {
 		IDProiect = iDProiect;
 	}
 
-	@XmlElement
+//	@XmlElement
 	public InterviuTehnic getInttehnic() {
 		return inttehnic;
 	}
@@ -104,7 +104,7 @@ public class Intern implements Serializable {
 		this.inttehnic = inttehnic;
 	}
 
-	@XmlElement
+//	@XmlElement
 	public Proiecte getProiect() {
 		return proiect;
 	}
@@ -113,7 +113,7 @@ public class Intern implements Serializable {
 		this.proiect = proiect;
 	}
 
-	@XmlElement
+//	@XmlElement
 	public EvaluareFinala getEfinal() {
 		return efinal;
 	}

@@ -152,6 +152,11 @@ public class EvaluareFinala implements Serializable {
 		String restUrl = BASE_URL + this.getNumeIntern();
 		return new AtomLink(null, restUrl, "get-intern");
 	}
+
+	public static EvaluareFinala toDTOAggregate(EvaluareFinala evf) {
+		return new EvaluareFinala( evf.IDIntern, evf.NumeIntern, evf.IDProiect, 
+				evf.TipFeedback, evf.DecizieFinala, null, null);
+	}
 	
 	
 }

@@ -147,7 +147,7 @@ public class Aplicanti implements Serializable {
 		Selectat = selectat;
 	}
 
-	@XmlElement
+//	@XmlElement
 	public Internship getInternsip() {
 		return internsip;
 	}
@@ -156,7 +156,7 @@ public class Aplicanti implements Serializable {
 		this.internsip = internsip;
 	}
 
-	@XmlElement
+//	@XmlElement
 	public InterviuTehnic getInttehnic() {
 		return inttehnic;
 	}
