@@ -147,7 +147,7 @@ public class Aplicanti implements Serializable {
 		Selectat = selectat;
 	}
 
-//	@XmlElement
+
 	public Internship getInternsip() {
 		return internsip;
 	}
@@ -156,7 +156,7 @@ public class Aplicanti implements Serializable {
 		this.internsip = internsip;
 	}
 
-//	@XmlElement
+
 	public InterviuTehnic getInttehnic() {
 		return inttehnic;
 	}
@@ -201,7 +201,7 @@ public class Aplicanti implements Serializable {
 	public static String BASE_URL = InterviuTehnic.BASE_URL;
 	@XmlElement(name = "link")
 	public AtomLink getLink() throws Exception {
-		String restUrl = BASE_URL + this.getInttehnic().getNumeAplicant() + "/aplicant/" + this.getNumeAplicant();
+		String restUrl = BASE_URL + this.getInttehnic().getDomeniuInternship() + "/aplicant/" + this.getNumeAplicant();
 		return new AtomLink(null, restUrl, "get-aplicant");
 	}
 	

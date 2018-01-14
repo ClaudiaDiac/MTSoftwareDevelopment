@@ -45,7 +45,10 @@ public class LocatiePromovariInternshipDataServiceEJB extends EntityRepositoryBa
 		logger.info("POSTCONSTRUCT-INIT ittehnicService: " + this.ittehnicService);
 	}
 	
-	public Locatie createNewLocatie(Integer IDLocatie){
+	@POST @Path("/new/{IDLocatie}")
+	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+	public Locatie createNewLocatie(@PathParam("IDLocatie")Integer IDLocatie){
 		Locatie locatii = new Locatie(IDLocatie, " Noua Locatie", null);
 		List<Promovare> promovariLocatie = new ArrayList<>();
 	//	Integer promovariCount = 3;
@@ -59,9 +62,7 @@ public class LocatiePromovariInternshipDataServiceEJB extends EntityRepositoryBa
 		return locatii;
 	}
 	 
-	@GET @Path("/{IDPromovare}")
-	@Produces ({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-		public Promovare getPromovareById(@PathParam("IDPromovare")Integer IDPromovare){
+	public Promovare getPromovareById(Integer IDPromovare){
 		return promovareRepository.getById(IDPromovare);
 	}
 	

@@ -84,7 +84,7 @@ public class ProiecteInterniEvaluareFinalaDataServiceEJB extends EntityRepositor
 
 	@POST
 	@Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	@Produces ({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	public Collection<Proiecte> addIntoCollection(Proiecte proiect){
 		super.add(proiect);
 		return super.toCollection();
@@ -92,7 +92,7 @@ public class ProiecteInterniEvaluareFinalaDataServiceEJB extends EntityRepositor
 	
 	@DELETE
 	@Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	@Produces ({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public Collection<Proiecte> removeFromCollection(Proiecte proiect){
 		logger.info("DEBUG: called Remove - proiect: " + proiect);
@@ -110,9 +110,9 @@ public class ProiecteInterniEvaluareFinalaDataServiceEJB extends EntityRepositor
 	
 	@PUT @Path("/{IDProiect}")
 	@Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
-	@Produces ({ MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
-	@Override
+	
 	public Proiecte add(Proiecte proiect){
 		proiect = super.add(proiect);
 		return Proiecte.toDOAggregate(proiect);
